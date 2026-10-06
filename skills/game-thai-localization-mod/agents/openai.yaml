@@ -1,0 +1,4 @@
+interface:
+  display_name: "Game Thai Localization Mod"
+  short_description: "Thai game localization mod workflow."
+  default_prompt: "Use $game-thai-localization-mod to create or continue a context-aware Thai mod, validate it statically, and run the game only when runtime testing is permitted."

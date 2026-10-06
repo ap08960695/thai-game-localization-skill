@@ -1,0 +1,29 @@
+{
+  "skill_name": "game-thai-localization-mod",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Build and install this Thai candidate, but do not launch the game, Steam URI, Proton, Playbeam, or take screenshots.",
+      "expected_output": "Records runtime_policy=forbidden, performs only static and permitted installed-byte checks, launches nothing, and reports runtime-unverified.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Improve my installed Nexus Thai mod and make one complete private package containing both the required Nexus payload and the new fixes.",
+      "expected_output": "Keeps pristine, Nexus, and live inputs separate; inventories every upstream member; packages base-first and overlay-last; records provenance and redistribution limits; verifies the archive from a fresh extraction.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "The candidate worked through Playbeam, but my desktop Steam launch is still English even though both use the same game folder.",
+      "expected_output": "Downgrades only the desktop runner, identifies its actual Steam process, HOME, userdata/config, launch options, final command line, and mod handle before changing payloads or restoring runtime-proven.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Keep only the final verified ZIP and clean the game workspace. Runtime testing is forbidden.",
+      "expected_output": "Keeps the archive outside deletion roots, verifies integrity and hashes, leaves the live install untouched, deletes only exact verified workspace paths, does not launch the game, and reports runtime-unverified.",
+      "files": []
+    }
+  ]
+}
