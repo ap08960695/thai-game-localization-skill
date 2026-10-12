@@ -18,8 +18,15 @@ mods** for installed games.
 | `skills/game-thai-localization-mod/scripts/validate_localization.py` | Locale-pack validator: ID/order parity, placeholder and control-token multisets, newlines, Thai combining marks, line width. Run `--self-check` to see it pass a good fixture and catch a broken one |
 | `skills/game-thai-localization-mod/scripts/audit_game_text.py` | Audit a game tree for text sources |
 | `skills/game-thai-localization-mod/evals/evals.json` | Behavioural evals for the skill |
+| `skills/game-thai-dubbing/SKILL.md` | Thai dubbing: joined voice manifest, designed character voices, measured timing, calibrated speech gates, listening, loose-WAV override, exclusive runtime gate, journaled removal |
+| `skills/game-thai-dubbing/references/` | Pilot evidence and limits, synthesis/QA, AI listening, rights, recovery, proven Unity Mono seam and unproven CRI/Wwise/UE adapters |
+| `skills/game-thai-dubbing/scripts/validate_wav.py` | Stdlib PCM16 WAV validator; run `--self-check` for synthetic fixtures and malformed-input checks |
+| `skills/game-thai-dubbing/scripts/plugin/` | BepInEx/HarmonyX C# source template with placeholder game hook; no compiled plugin or game assemblies |
+| `skills/game-thai-dubbing/scripts/listen/` | Optional adapted listening panel and CPU plots; external CLI/model, FFmpeg, NumPy, librosa, and Pillow required |
 
-Python 3.9+, standard library only.
+Python 3.9+, standard library only for localization checkers and WAV validation.
+Optional listening scripts require the external dependencies described in
+[listening.md](skills/game-thai-dubbing/references/listening.md).
 
 ## Use
 
@@ -49,4 +56,8 @@ files.
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE). Third-party tools are referenced, not vendored;
+their code, model, dataset, and codec licences remain separate. Dubbing uses
+designed voices only; original audio is for local analysis and is never shipped.
+Do not publish LoRA weights trained on BY-SA data. See
+[dubbing rights](skills/game-thai-dubbing/references/rights.md).
