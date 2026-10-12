@@ -14,20 +14,21 @@ volume, calls Play, and stops/skips via its existing channel. A missing original
 asset cannot be repaired by this late assignment seam.
 
 The template's `GAME_VOICE_CONTAINER_TYPE` and `<GAME_VOICE_COROUTINE>` are
-deliberate placeholders. For **Digimon Survive**, the observed example was:
+deliberate placeholders. In one Unity Mono title, the observed example was a
+voice coroutine's `AudioSource.clip` assignment, with one matching setter in the
+target iterator:
 
 ```text
-container: sysSound+SysSoundVoice
-coroutine prefix: <playVoiceCoroutine>
-iterator method: MoveNext
-observed iterator: sysSound+SysSoundVoice+<playVoiceCoroutine>d__14
-expected AudioSource.clip setters: 1
+target: shared voice coroutine iterator
+operation: replace AudioSource.clip assignment
+expected matching assignments: 1
 ```
 
-These are example identifiers, not a portable ABI promise. Reinspect each build;
-the compiler-generated suffix can change. The template omits the pilot's title
-controller, hardcoded scene IDs, bundle paths, and automated launch adapter.
-Create that test adapter privately from the game's real request API.
+This is a technique example, not a portable ABI promise. Reinspect each build;
+the compiler-generated state-machine structure can change. The template omits
+the pilot's title controller, hardcoded scene IDs, bundle paths, and automated
+launch adapter. Create that test adapter privately from the game's real request
+API.
 
 Build with owner-local assemblies referenced with `Private=false`:
 
