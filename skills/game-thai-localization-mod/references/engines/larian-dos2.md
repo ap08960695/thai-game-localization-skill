@@ -15,8 +15,8 @@ work, or a Nexus overlay that combines an `English.pak` with loose font assets.
 
 - Allow only AppID `435150`, final executable `EoCApp.exe`, launcher helper
   `SupportTool.exe`, and the verified `DefEd/Data` targets.
-- Record host and Playbeam/container paths separately. Resolve their mounts and
-  hashes before treating `/home/alice/...` and `/home/bob/...` as the same
+- Record host and stream-runtime/container paths separately. Resolve their mounts and
+  hashes before treating `<host-home>/...` and `<runtime-home>/...` as the same
   install; a process command line can expose a container alias, not a safe host
   deletion target.
 - Use Norbyte LSLib/Divine for Larian PAKs. Do not infer PAK validity from `7z`;

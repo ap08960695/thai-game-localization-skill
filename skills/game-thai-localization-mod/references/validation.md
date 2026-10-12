@@ -1,12 +1,5 @@
 # Static Validation Contract
 
-## Contents
-
-- Commands and manifest
-- Encoding and Thai shaping
-- Font coverage and fit
-- Per-pass delta audit
-
 Use scripts/validate_localization.py as the central JSON/CSV gate. It uses only
 the Python standard library and writes one machine-readable JSON document to
 stdout.

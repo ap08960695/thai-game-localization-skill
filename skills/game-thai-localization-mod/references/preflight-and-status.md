@@ -1,11 +1,5 @@
 # Preflight and Evidence Status
 
-## Contents
-
-- Preflight contract
-- Work status and required evidence
-- Evidence record
-
 Read this before changing or packing game files. Save the preflight record beside
 the working translation, not inside the live game directory.
 
@@ -14,11 +8,7 @@ the working translation, not inside the live game directory.
 Record these values before editing:
 
 - game name, install root, executable/process names, and every live target path;
-- intended runner, Steam/account identity, process namespace, config root, and
-  whether the game library is shared with another runner;
 - engine/container type and the logical-source to physical-archive/member map;
-- loader contract: archive priority, signing/encryption policy, required launch
-  options/plugins/selectors, and where each setting persists;
 - SHA-256 and byte size of each source archive and extracted source file;
 - pinned source and target encoding, including BOM policy;
 - runtime-test policy: permitted, forbidden, or manual-by-user;
@@ -86,16 +76,12 @@ Advance monotonically through these statuses:
      matches its verified candidate hash/bytes; the install journal is complete.
 6. runtime-proven
    - A permitted runtime test proves the game boots and reached the tested Thai
-     surfaces, with current screenshot/log/process evidence from the intended
-     runner. Record its account/config root, normal-launch command line, and
-     loader log or exact handle evidence for the installed payload.
+     surfaces, with current screenshot/log/process evidence.
 
 Each status inherits all evidence from prior statuses. Never skip a status in
 reporting. A manual runtime test by the user does not become runtime-proven until
-the result, tested build/hash, and runner are recorded. Proof from Playbeam does
-not transfer to host Steam, or vice versa, when account/config or loader settings
-differ. If launch permission is withheld, stop at installed-and-byte-verified
-and say runtime-unverified.
+the result and tested build/hash are recorded. If launch permission is withheld,
+stop at installed-and-byte-verified and say runtime-unverified.
 
 ## Evidence record
 
@@ -103,7 +89,6 @@ Keep a small JSON or equivalent record containing:
 
 - current status and timestamp;
 - source/candidate/installed hashes;
-- runner/account/config root and loader settings used by the normal launch;
 - validator report path, field-delta audit, and archive diff evidence;
 - reviewed scope and unresolved classifications;
 - install journal path and rollback path;

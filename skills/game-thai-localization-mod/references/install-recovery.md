@@ -1,12 +1,5 @@
 # Transactional Install and Recovery
 
-## Contents
-
-- Before packing
-- Install transaction and journal
-- Partial-failure recovery
-- Retention and cleanup
-
 Use this for every install, especially when one pass updates several archives.
 
 ## Before packing
@@ -29,14 +22,13 @@ fit. Ask before changing the retention/headroom contract.
 
 ## Install transaction
 
-1. Require the target game, packer, and every process that holds a live target
-   open to be stopped. Stop a launcher/runtime helper only when it owns such a
-   handle or a persisted setting being edited; never stop an unrelated
-   host/container runner. On Linux, resolve exact PIDs and use two independent
-   handle checks such as `fuser` and `lsof`; use platform-equivalent read-only
-   checks elsewhere. If runtime activity is forbidden, this guard remains
-   allowed but must launch nothing. A full-command `ps | grep/rg` probe can
-   match its own scanner and create a false positive.
+1. Require evidence that the game, launcher/runtime helper, and packer are
+   stopped and that no process holds a live target open. On Linux, inspect
+   `/proc` process names and use two independent handle checks such as `fuser`
+   and `lsof`; use platform-equivalent read-only checks elsewhere. If the user
+   forbids runtime activity, this guard is still allowed; do not launch anything.
+   Prefer exact PIDs plus `comm` or `/proc/<pid>/cmdline`; a full-command
+   `ps | grep/rg` probe can match its own scanner and create a false positive.
 2. Create the new rollback copy immediately before install and verify its hash.
 3. Create an install journal before replacing the first live target.
 4. For each target, write a unique temporary file on the target filesystem,

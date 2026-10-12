@@ -19,24 +19,10 @@
   the new release at `static-valid` until that exact CPK is installed and
   current runtime evidence proves it; predecessor screenshots are historical
   evidence only.
-- After runtime promotion, replace stale top-level `static-valid` metadata with
-  a concise manifest and README bound to the tested bytes. Preserve the old
-  static manifest under package-relative reports only when it remains useful
-  provenance; do not let it define the final evidence status.
 - For a large already-compressed CPK, use ZIP store mode (`zip -0`) to avoid
   futile recompression. Put the CPK, README, manifest, and SHA-256 checksums in
   the ZIP, then run `unzip -t`, stream-check the CPK hash from inside the ZIP,
   and read the README/manifest back before cleanup.
-- Generate `SHA256SUMS` only after the final payload, metadata, and captures are
-  in staging. For any archive format, reject absolute or parent-traversal
-  members, duplicates, symlinks, hardlinks, special entries, and unexpected
-  top-level roots. Fresh-extract the whole archive, verify every checksum, then
-  execute the README's exact selective-install command and byte-compare its
-  installed files with the runtime-tested live files.
-- Keep one final staging tree outside the work-tree deletion target; never nest
-  a prior candidate or staging tree inside the next revision. Place the archive
-  outside both, verify it, then remove only the literal staging and game-work
-  paths. Re-hash the retained archive and live installed members afterward.
 - If delivery-only cleanup is explicitly requested, verify the package first,
   inventory exact deletion targets, check nested mounts and exact open handles,
   and delete only enumerated workspace roots with `find -P <target> -depth
